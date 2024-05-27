@@ -1,0 +1,14 @@
+stages:
+- test
+test-backend:
+stage: test
+image: maven:latest
+script:
+- cd backend
+- mvn test
+artifacts:
+when: always
+reports:
+junit:
+- backend/target/surefire-reports/TEST-*.xml
+- backend/target/failsafe-reports/TEST-*.xml
